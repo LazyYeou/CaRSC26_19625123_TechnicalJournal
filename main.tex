@@ -1,0 +1,139 @@
+\documentclass[11pt, paper=a4, DIV=12]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[bahasa]{babel} 
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem} 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{codegray}{rgb}{0.47, 0.47, 0.47}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolour}{rgb}{0.97, 0.97, 0.97} 
+\definecolor{codeblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{codered}{rgb}{0.7, 0.11, 0.11}
+
+\lstdefinestyle{inistyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\bfseries\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codered},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                        
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=10pt,                      
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,                           
+    frame=lines,                         
+    rulecolor=\color{black!80},          
+    framerule=1pt,
+    aboveskip=15pt,                      
+    belowskip=15pt,                    
+    xleftmargin=15pt,                    
+}
+
+\lstset{style=inistyle}
+
+\title{Technical Journal RSC Aksantara 2026}
+\author{Muhammad Ridwan Nasir Firdaus}
+\date{Januari -- Februari 2026}
+
+\begin{document}
+\maketitle
+
+\tableofcontents 
+\pagebreak
+
+\section{Kamis, 29 Januari 2026} 
+\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Poin Utama]
+\begin{itemize}[noitemsep] 
+    \item Pengenalan RSC
+    \item Arsitektur Sistem UAV
+    \item Konsep OOP 
+    \item Error Handling
+    \item Multithreading Dasar
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Pengenalan RSC}
+RSC adalah departemen dalam Aksantara yang mengelola seluruh aspek terkait dengan perangkat lunak (\textit{software}). Dalam RSC terdapat dua keilmuan, yaitu \textit{Control and Perception} (ConCept) dan \textit{Ground Control Station }(GCS).
+
+\subsubsection{Control and Perception}
+Berfokus dalam pengembangan sistem navigasi untuk otonom dengan menggunakan algoritma tingkat tinggi berbasis ROS2 dan pengembangan persepsi dengan \textit{Computer Vision}.
+
+\subsubsection{Ground Control Station}
+Berfokus dalam pengembangan \textit{software} Ground Control Station internal.
+
+\subsection{Arsitektur Sistem UAV}
+\subsubsection{Wahana}
+\begin{itemize}
+    \item \textbf{Airframe}: Struktur utama drone yang terdiri atas \textit{Fuselage}/badan, ekor, dan sayap untuk FW, sedangkan untuk VTOL terdiri atas \textit{frame center} dan \textit{arm}.
+    \item \textbf{Sistem Propulsi}: Terdiri dari motor, propeler, \textit{Electronic Speed Controller}(ESC), dan baterai LiPo.
+\end{itemize}
+
+\subsubsection{Avionics}
+\begin{itemize}
+    \item \textbf{Flight Controller (FC)}: Berperan sebagai saraf motorik dari UAV yang memproses dan menyatukan data dari sensor serta untuk menjalankan algoritma kontrol penerbangan. Dalam FC terdapat komponen lain seperti MCU, barometer, IMU, dan \textit{blackbox}.
+    \item \textbf{Modul GNSS}: Menerima sinyal dari sistem satelit seperti GPS, Galileo, dan BeiDou untuk menentukan lokasi, mengukur kecepatan, dan waktu UAV. 
+    \item \textbf{Airspeed Sensor}: Menghitung kecepatan relatif wahana terhadap kecepatan udara.
+\end{itemize}
+
+\subsubsection{Payload}
+Merupakan komponen yang diangkut oleh drone dan tidak esensial untuk keperluan penerbangan. Komponennya seperti kamera fpv, kamera tracking, LiDar, kamera depth, dan sensor partikel.
+
+\subsubsection{Sistem Komunikasi Radio}
+Komunikasi antara UAV dengan GCS adalah gelombang radio dalam frekuensi tertentu. Jalur komunikasi fungsional yang terbentuk dari pertukaran data lewat frekuensi disebut dengan \textit{link}. Terdapat dua \textit{link} utama dalam sistem UAV, yaitu:
+
+\begin{itemize}
+    \item \textbf{Non-Payload Link}: Saluran utama yang bertanggunang jawab atas pengendalian UAV. Sistem ini terjalin antara \textit{radio tranceiver} GCS dengan UAV.
+    \item \textbf{Payload Link}: Saluran untuk mengirim data \textit{payload} antara GCS dengan UAV.
+\end{itemize}
+
+\subsubsection{Companion Copmuter (CC)}
+CC digunakan untuk menangani masalah komputasi tingkat tinggi yang harus dilakukan secara real-time dan melengkapi FC sebagai sistem saraf motorik dari UAV.
+
+%==================================================
+
+\subsection{Object Oriented Programming}
+
+\subsubsection{Class dan Object}
+Class merupakan \textit{blueprint} yang berisi sifat-sifat dari suatu objek dan \textit{Object} adalah bentuk atau implementasi nyata dari suatu class.
+\begin{lstlisting}[language=C++, caption=Contoh Penerapan Class dan Object]
+#include <iostream>
+#include <string>
+
+//inisialisasi class Drone
+class Drone {
+public:
+    std::string name;
+    int altitude;
+    int speed;
+};
+
+int main() {
+    Drone drone1; //inisialisi object dari class Drone
+    drone1.name = "Drone Suki ygy";
+    drone1.altitude = 0;
+    drone1.speed = 0; 
+}
+\end{lstlisting}
+
+\subsubsection{Encapsulated}x
+\subsubsection{Inherited}
+\subsubsection{Abstraction}
+\subsubsection{Polymorphism}
+
+\section{Jumat, 30 Januari 2026}
+% Isi catatan berikutnya...
+\textit{Progress ongoing...}
+
+\end{document}
