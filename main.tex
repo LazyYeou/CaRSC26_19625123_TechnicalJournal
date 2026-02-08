@@ -1,47 +1,15 @@
 \documentclass[11pt, paper=a4, DIV=12]{scrartcl}
 
 \usepackage[utf8]{inputenc}
-\usepackage[bahasa]{babel} 
+\usepackage[indonesian]{babel} 
 \usepackage{tcolorbox}
 \usepackage[margin=2cm]{geometry}
 \usepackage{hyperref}
 \usepackage{enumitem} 
 \usepackage{listings}
-\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{array}
 
-\definecolor{codegreen}{rgb}{0.13, 0.55, 0.13}
-\definecolor{codegray}{rgb}{0.47, 0.47, 0.47}
-\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
-\definecolor{backcolour}{rgb}{0.97, 0.97, 0.97} 
-\definecolor{codeblue}{rgb}{0.16, 0.32, 0.75}
-\definecolor{codered}{rgb}{0.7, 0.11, 0.11}
-
-\lstdefinestyle{inistyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\bfseries\color{codeblue},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codered},
-    basicstyle=\ttfamily\small,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                        
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=10pt,                      
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=4,                           
-    frame=lines,                         
-    rulecolor=\color{black!80},          
-    framerule=1pt,
-    aboveskip=15pt,                      
-    belowskip=15pt,                    
-    xleftmargin=15pt,                    
-}
-
-\lstset{style=inistyle}
 
 \title{Technical Journal RSC Aksantara 2026}
 \author{Muhammad Ridwan Nasir Firdaus}
@@ -54,23 +22,14 @@
 \pagebreak
 
 \section{Kamis, 29 Januari 2026} 
-\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Poin Utama]
-\begin{itemize}[noitemsep] 
-    \item Pengenalan RSC
-    \item Arsitektur Sistem UAV
-    \item Konsep OOP 
-    \item Error Handling
-    \item Multithreading Dasar
-\end{itemize}
-\end{tcolorbox}
 
 \subsection{Pengenalan RSC}
 RSC adalah departemen dalam Aksantara yang mengelola seluruh aspek terkait dengan perangkat lunak (\textit{software}). Dalam RSC terdapat dua keilmuan, yaitu \textit{Control and Perception} (ConCept) dan \textit{Ground Control Station }(GCS).
 
-\subsubsection{Control and Perception}
+\paragraph{Control and Perception}
 Berfokus dalam pengembangan sistem navigasi untuk otonom dengan menggunakan algoritma tingkat tinggi berbasis ROS2 dan pengembangan persepsi dengan \textit{Computer Vision}.
 
-\subsubsection{Ground Control Station}
+\paragraph{Ground Control Station}
 Berfokus dalam pengembangan \textit{software} Ground Control Station internal.
 
 \subsection{Arsitektur Sistem UAV}
@@ -88,9 +47,11 @@ Berfokus dalam pengembangan \textit{software} Ground Control Station internal.
 \end{itemize}
 
 \subsubsection{Payload}
+
 Merupakan komponen yang diangkut oleh drone dan tidak esensial untuk keperluan penerbangan. Komponennya seperti kamera fpv, kamera tracking, LiDar, kamera depth, dan sensor partikel.
 
 \subsubsection{Sistem Komunikasi Radio}
+
 Komunikasi antara UAV dengan GCS adalah gelombang radio dalam frekuensi tertentu. Jalur komunikasi fungsional yang terbentuk dari pertukaran data lewat frekuensi disebut dengan \textit{link}. Terdapat dua \textit{link} utama dalam sistem UAV, yaitu:
 
 \begin{itemize}
@@ -98,42 +59,177 @@ Komunikasi antara UAV dengan GCS adalah gelombang radio dalam frekuensi tertentu
     \item \textbf{Payload Link}: Saluran untuk mengirim data \textit{payload} antara GCS dengan UAV.
 \end{itemize}
 
-\subsubsection{Companion Copmuter (CC)}
-CC digunakan untuk menangani masalah komputasi tingkat tinggi yang harus dilakukan secara real-time dan melengkapi FC sebagai sistem saraf motorik dari UAV.
+\subsubsection{Companion Computer (CC)}
 
-%==================================================
+CC digunakan untuk menangani masalah komputasi tingkat tinggi yang harus dilakukan secara real-time dan melengkapi FC sebagai sistem saraf motorik dari UAV.
 
 \subsection{Object Oriented Programming}
 
-\subsubsection{Class dan Object}
-Class merupakan \textit{blueprint} yang berisi sifat-sifat dari suatu objek dan \textit{Object} adalah bentuk atau implementasi nyata dari suatu class.
-\begin{lstlisting}[language=C++, caption=Contoh Penerapan Class dan Object]
-#include <iostream>
-#include <string>
+Di OOP sendiri aku kembali recall ke hal-hal dasar seperti apa itu class dan object. Class itu simpelnya seperti sebuah cetakan \textit{blueprint} dan objek adalah barang hasil cetakan tersebut. Selain itu, di dalam OOP terdapat empat pilar dasar, yaitu \textit{Encapsulation}, \textit{Abstraction}, \textit{Inheritance}, dan \textit{Polymorphism}.
 
-//inisialisasi class Drone
-class Drone {
-public:
-    std::string name;
-    int altitude;
-    int speed;
-};
+\subsection{Tantangan}
 
-int main() {
-    Drone drone1; //inisialisi object dari class Drone
-    drone1.name = "Drone Suki ygy";
-    drone1.altitude = 0;
-    drone1.speed = 0; 
-}
-\end{lstlisting}
-
-\subsubsection{Encapsulated}x
-\subsubsection{Inherited}
-\subsubsection{Abstraction}
-\subsubsection{Polymorphism}
+Materi \textit{multithreading} lumayan sulit (menurutku) karena disini kita bener-bener diminta untuk buat code seaman mungkin dalam ngakses suatu \textit{shared resource} dan disini rawan banget buat terjadi masalah semacam \textit{deadlock}, \textit{racing condition}, dll.
 
 \section{Jumat, 30 Januari 2026}
-% Isi catatan berikutnya...
-\textit{Progress ongoing...}
+
+Di hari ini aku mendapat materi mengenai MAVLink dan SITL. MAVLink itu adalah sebuah protokol untuk proses komunikasi antar drone, GSC, dan FC. Salah satu keunggulan mavlink itu protokolnya ringan dan efisien. MAVLink sendiri punya struktur data (format) sendiri dan yang menarik perhatianku adalah pada bagian \textit{signature}, ternyata protokol MAVLink memiliki langkah preventif untuk mencegah spoofing dan modifikasi paket data. Dan diakhir meeting ofkors selalu ada oleh-oleh (aku mw lima). Oleh-olehnya cukup simpel dan seru yaitu melakukan simulasi drone di SITL dan Gazebo dengan drone bergerak mengikuti \textit{pattern} angka delapan. Jadi ada dua metode, pertama dengan membuat manual \textit{waypoint} dan kedua dengan menggunakan \textit{script}. Buat metode pertama itu bisa dibilang \textit{easy} banget, ya karena cuma ngeklik-klik doang. Tapi, buat metode kedua itu lumayan menantang. Pertama aku harus cari tahu dulu fungsi yang bisa membentuk pola angka 8 apa dan nama fungsi itu adalah \textbf{Lemniscate of Gerono}.
+
+\subsection{MAVLink}
+MAVLink atau \textit{Mictro Air Vehicle Link} adalah sebuah protokol akomunikasi yang digunakan untuk pertukuran informasi antar drone, GCS, \textit{flight controller}, dan perangkat lainnya. Informasi yang dikirim dibungkus dalam bentuk \textit{message}. MAVLink sendiri memiliki beberapa keunggulan, seprti protokolnya yang ringan dan efisien dikarenanan \textit{size overhead}-nya kecil, tidak memerlukan \textit{framing} tambahan, \textit{reliable} untuk komunikasi antar berbagai jenis wahana, GSC, dan node lain pada kondisi yang beragam dan menantang. Dan terakhir MAVLink \textit{support} banyak bahasa pemrograman dan dapat berjalan di berbagai mikrokontoler/OS.
+
+\subsubsection{Struktur}
+Paket pesan MAVLink memeliki struktur sebagai berikut.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{images/mavlink.png}
+    \caption{Struktur Paket Pesan MAVLink}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{itemize}
+    \item STX / awal paket: berisi \textit{magic number} dalam basis heksadesimal untuk membedakannya dengan protolol lain.
+    \item LEN: Panjang \textit{payload}, \textit{range}-nya antara 1 hingga 255.
+    \item \verb|INC_FLAGS|/\textit{Incompatibility Flags}: Menandai fitur mana yang wajib didukung \textit{receiver}, jika tidak paket akan ditolak.
+    \item \verb|COMP_FLAGS|/\textit{Compatibility Flags}: Menandai fitur tambahan yang sifatnya opsional. Jika \textit{receiver} tidak mengenali flag ini, maka paket tetap boleh untuk diproses.
+    \item \verb|SEQ|/\textit{Sequence Number}: Nomor urut paket yang digunakan untuk mendeteksi \textit{packet loss}. Nilainya da apada range 0 hingga 255 dan akan kembali menjadi 0 jika telah mencapai batas.
+    \item \verb|SYS_ID|/\textit{System ID}: Menunjukkan identitas sistem pengirim pesan.
+    \item \verb|COMP_ID|/\textit{Component ID}: Menunjukkan identitas komponen dalam suatu sistem.
+    \item  \verb|MSG_ID|/\textit{Message ID}: Menunjukkan identitas jenis pesan yang dikirim. MAVLink 2 memiliki \textit{size} 3 byte.
+    \item Payload: Berisi data utama dari pesa sesuai dengan \verb|MSG_ID|. Panjang payload ditentukan oleh nilai LEN dan data disusun dalam format \textit{little-endian}.
+    \item Checksum: Digunakan untuk memverifikasi integritas data. Memiliki \textit{size} 2 btye, checksum dihitung dari head (kecuali STX), payload, dan CRC extra.
+    \item Signature: Digunakan jika fitur \textit{message signing} diaktifkan. Fungsinya untuk meningkatkan keamanan komunikasi dengan mencegah \textit{spoofing} dan modifikasi paket.
+\end{itemize}
+
+\subsubsection{Messages}
+MAVLink memiliki berbagai jenis \textit{messages} yang digunakan untuk pertukuran informasi. Setiap \textit{messages} memiliki ID unik dan meiliki struktur \textit{payload}-nya sendiir. Beberapa Message ID yang umum digunakan dalam MAVLink ialah sebagai berikut:
+
+\begin{center}
+\begin{tabular}{ | m{10em} | m{5em}| m{20em} | } 
+  \hline
+  Message Name & Message ID & Fungsi\\ 
+  \hline
+  HEARTBEAT & 0 & Menandakan bahwa sistem masih aktif dan mengirimkan status dasar sistem  \\ 
+  \hline
+  SYS\_STATUS & 1 & Menyediakan informasi status sistem seperti kesehatan sensor dan daya  \\ 
+  \hline
+  SYSTEM\_TIME & 2 & Menyinkronkan waktu sistem  \\ 
+  \hline
+  PING & 4 & Menguji konektivitas dan latensi komunikasi  \\ 
+  \hline
+  GPS\_RAW\_INT & 24 & Data mentah GPS  \\ 
+  \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{MAVProxy}
+Merupakan tool berbasis CLI berfungsi sebagai router, relay, dan controller untuk komunikasi MAVLink antara FC dan berbagai aplikasi lain. MAVProxy memiliki fungsi yang mirip dengan GCS pada umumnya. MAVProxy dapat melakukan \textit{arm}, \textit{disarm}, mengubah \textit{flight mode}, \textit{upload}, dan eksekusi misi. Tapi MAVLink tidak dapat melakukan fungsi-fungsi pada GCS yang berkaitan dengan GUI misalnya menampilkan peta interaktif. Beberapa keuntungan dari MAVProxy, yaitu dapat berjalan di Linux, \textit{lightweight}, dan stabil untuk \textit{long running}.
+
+\subsection{SITL}
+SITL atay \textit{Software In The Loop} yang digunakan adalah ArduPilot sebagai \textit{flight stack} utama dan ArduPilot merupakan \textit{flight stack} yang secara \textit{de facto} digunakan di Aksantara ITB. Fungsi dari SITL adalah untuk menjalankan dan menguju sistem autopilot drone tanpa menggunakan \textit{hardware} fisik. ArduPilot berperan sebagai otak drone, yang menjalankan logika penerbangan.
+
+\subsection{Tantangan}
+Karena aku pengguna \textbf{Jendela} dan belum punya niat untuk \textit{dual boot} jadi aku hanya menggunakan vm untuk menjalankan sistem operasi Ubuntu. Tapi waktu aku ngejalanin simulasi di Gazebo, aduhai \textit{lag} parah cuyyy... Ini gak tau emang laptop aku yang kentang apa gimana. Alhasil aku terpaksa untuk \textit{dual boot}, tapi eits.... gak semudah itu, waktu pengen partisi \textit{storage} ternyata cuma bisa ngepartisi 20GB padahal \textit{free space} di SSD ku masih ada 170 GB (emang si jendela ini ringkih ygy). Setelah ngotak-ngatik \textit{settingan} dfrag, \textit{cache}, dll. \textit{Storage} yang bisa akhirnya nambah... 5GB doang (NGUWAWOR CIK) dan \textit{in the end} terpaksa make \textit{third party software}.
+
+\section{Minggu, 1 Februari 2026}
+
+Materi hari ini mantep banget, aku baru tau kalo ternyata selama ini RGB, HSV, CMYK, dll itu merupakan representasi ruang citra dalam bentuk matriks. Terus yang gak kalah menarik adalah operasi \textit{Neighborhood} seperti \textit{convulution} dan morfologi. \textit{connvulution} sendiri ialah operasi yang dilakukan antara matriks kecil (\textit{kernel}) dengan setiap piksel dan nilai tetannga dari suatu citra, salah satu penggunaanya adalah \textit{edge detection}. Lalu ada morfologi yang biasa digunakan pada pengolahan citra biner (hitam putih) untuk memanipulasi bentuk objek dalam citra.
+
+\subsection{Computer Vision}
+\subsubsection{Representasi Citra}
+Citra atau gambar tersusun atas piksel-piksel. Sebuah citra dapat direpresentasikan sebagai sebuah matriks berukuran tinggi(H) x lebar(W), yang mana setiap elemen dalam matriks akan mewakili intensitas cahaya dalam piksel tertenu. Contoh pada citra \textit{grayscale}, setiap piksel memiliki nilai intensitas dengan \textit{ranage} 0 (hitam) hingga 255 (putih). Sedangkan untuk citra berwarna seperti RGB, tiap pikselnya direpresentasikan oleh tiga nilai intensitas dari warna dasar (merah, biru, hijau). Citra dapat dianggap sebagai tumpukan dari 3 matriks, tiap matriks mewakili saluran (\textit{channel}) warna. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{images/rgb-hsv.png}
+    \caption{Representasi Citra Dalam RGB dan HSV}
+    \label{fig:placeholder}
+\end{figure}
+Dan contoh lainnya adalah citra HSV (Hue, Saturation, Value) yang memisahkan informasi warna (hue), saturasi, dan kecerahan (value).
+
+\subsubsection{Operasi Neighborhood}
+Merupakan teknis dasar dalam pengolahan citra digital yang melibatkan manipulasi piksel berdasarkan nilai piksel disekitarnya. Karena banayak informasi penting dalam citra, seperti \textit{edge}, teksture, dan pola dapat diidentifikasi dengan melihat hubungan antar piksel yang berdekatan.
+
+\paragraph{Convolution}
+merupakan bentuk operasi \textit{neighborhood} dengan menggunakan kernel. Kernel adalah matriks dengan ukuran kecil yang diterapkan pada setiap piksel citra untuk menghasilkan nilai baru berdasarkan nilai piksel tetangganya. Kernel akan digeser melintasi citra dan pada setiap posisi, nilai baru dihitung dengan menjumlhkan hasil kali elemen kernel dengan nilai piksel yang sesuai dibawahnya. Salah satu aplikasi \textit{convolution} adalah dalam \textit{edge detection}, yang mana konsepnya kernel melihat perubahan drastis dalam intensitas piksel yang menandakan tepi objek dalam citra. Algortima Sobel merupaak contoh dari \textit{convulution} untuk mendeteksi tepi secaar horizontal dan vertikel dengan menggunakan dua kernel berbeda. Selain untuk \textit{edge detection}, \textit{convolution} juga bisa diterapkan untuk pengaburan, penajaman, dan peningkatan kontras.
+
+\paragraph{Morfologi}
+digunakan dalam pengolahan citra biner (hitam putih) untuk memanipulasi bentuk objek dalam citra. Operasi dasar dalam morfologi adalah \textit{erosion} dan \textit{dilation}. \textit{Erosion} akan menguragi ukuran objek dengan cara menghapus bagian piksel di tepi objek, sedangkan \textit{dilation} merupakan kebalikannya yaitu memperbesar ukurang objek dengan menambah piksel di tepi objek.
+
+\subsubsection{Thresholding dan Segmentasi}
+\textit{Thresholding} merupakan teknik sederhana tetapi efektif untuk memisahkan objek dari latar belakang dalam citra. Dengan menetapkan \textit{threshold} tertentu, kita dapat mengubah citra \textit{grayscale} menajdi citra biner, tiap piksel dengan nilai diatas batas akan berubah menjadi putih dan yang dibwah akan menjadi hytam.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{images/global_thresholding_.png}
+    \caption{Contoh Dari Thresholding dan Segmentasi}
+    \label{fig:placeholder}
+\end{figure}
+
+Citra hasil \textit{thresholding} akan digunakan untuk segmentasi objek. Beberapa teknik segmentasi lainnya melibatkan beberapa metode, seperti \textit{k-means clustering}, \textit{region growing}, dan \textit{graph-based segmentation}.
+
+\subsection{AI Dalam Computer Vision}
+
+\subsubsection{Machine Learning}
+Merupakan cabang dari \textit{artificial intelligence} yang berfokus pada pengembangan algoritma dan model yang memungkinkan komputer untuk belajar dari data dan membuat prediksi tanpa perlu diprogram secara eksplisit. Dalam \textit{computer vision}, \textit{machine learning} digunakan untuk mengajarkan komputer dalam mengali \textit{pattern}, objek, dan fitur dalam gambar atau video. Dalam \textit{machine learning}, model dilatih menggunakan dataset yang beri contoh input (\textit{feature}) dan ouput(\textit{target)}. Proses pelatihan melibatkan penyesuaian parameter model agar dapat meminimalkan \textit{loss function} pada hasil prediksi model. Dalam \textit{machine learning} terdapat beberapa pendekatan utama, yaitu:
+
+\begin{itemize}
+    \item \textit{Supervised Learning}: Pada pendekatan ini, model dilatih menggunakan data yang sudah diberi label. Jadi model akan diberi tahu input dan ouput dari masing-masing data. Contoh penggunaanya ada dalam klasifikasi gambar, di mana model belajar untuk mengenali suatu objek berdasar label yang telah diberi saat proses \textit{training}.
+    \item \textit{Unsupervised Learning}: Pada pendekatan ini, model dilatih dengan menggunakan data yang tidak diberi label, sehingga model harus menemukan \textit{pattern} dari tiap-tiap data. Contoh aplikasinya adalah \textit{clustering}, model akan mengelompokkan data/gambar berdasar kesamaan fitur tanpa mengetahui gambar apa itu sebenarnya. 
+    \item \textit{Reinforcement Learning}: Model akan belajar untuk membuat suatu keputusan dengan berinteraksi dengan lingkungan dan menerima \textit{feedback} berupa \textit{prize} jikas berhasil atau \textit{pusnishment} jika gagal. Contohnya adalah \textit{agent} dalam video game, di mana \textit{agent} mempelajari strategi terbaik untuk memenangkan berdasarkan hasil dari tindakannya. 
+\end{itemize}
+
+\paragraph{Model Evaluation} Digunakan untuk mengetahui seberapa bagus model yang dibuat. Terdapat beberapa metrik yang umum digunakan untuk menilai model \textit{machine learning} dalam \textit{task computer vision}, seperti klasifikasi dan deteksi objek.
+
+\paragraph{Metrik Evaluasi Klasifikasi} Ketika model melakukan prediksi hasilnya tentu bisa benar atau salah. Dapat dibuat \textit{confusion matrix} yang menujukkan jumlah benar atau salah untuk tiap kelas.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/confusion_matrix.png}
+    \caption{Confusion Matrix}
+    \label{fig:placeholder}
+\end{figure}
+
+Dari \textit{confusion matrix} bisa dihitung metrik-metrik penting, seperti accuracy, precision, recall, dan f1-score.
+
+\begin{enumerate}
+    \item \textit{Accuracy}: Mengukur seberapa akurat model dalam melakukan prediksi. Rumusnya: $$\text{Accuracy} = \frac{TP + TN}{TP +TN + FP + FN}$$
+    \item \textit{Precision}: Mengukur tingkat ketepatn prediksi postif objek. Rumusnya: $$\text{Precision} = \frac{TP}{TP + FP}$$
+    \item \textit{Recall}: Mengukur tingkat keberhasilan model dalam menemukan dala positif. Rumusnya: $$\text{Recall} = \frac{TP}{TP + FN}$$
+    \item \textit{F1-score}: Harmonic mean dari precision dan recall. Rumusnya: $$\text{F1-score} = 2\times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
+\end{enumerate}
+
+\paragraph{Metrik Evaluasi Deteksi dan Segmentasi Objek}
+Metrik yabngn sering digunakan yaitu \textit{Intersection Over Union} (IoU) dan \textit{Mean Average Precision} (mAP) untuk deteksi dan \textit{Dice Coefficient} untuk segmentasi.
+
+\begin{enumerate}
+    \item \textit{Intesection over Union}: Mengukur seberapa baik prediksi \textit{bounding box} dari model tumpang tindih dengan \textit{ground truth bounding box}. Rumusnya $$\text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}}$$
+    \item \textit{Mean Average Precision}: Metrik penggabungan antara recall dan precision dalam berbagai \textit{threshold} IoU. mAP dihtitung dengan mengambil rata-rata dari \textit{Average Precision} untuk setiap kelas objek.
+      \item \textit{Dice Coefficient}: Metrik yang digunakan untuk mengukur kesamaan antara dua set, sering digunakan dalam segmentasi citra. Rumusnya $$\text{Dice} = \frac{2  \times|A \cap B|}{|A| + |B|}$$
+\end{enumerate}
+
+\subsection{Deep Learning}
+\textit{Deep Learning} adalah subset dari \textit{Machine Learning} yang menggunakan jaringan saraf tiruan dengan banyak lapisan untuk mempelajari representasi data yang kompleks. Salah satu arsitekturnya yang populer untuk tugas \textit{computer vision} adalah \textit{Convulational Neural Network} (CNN). CNN dirancang untuk memproses data yang memiliki strukutur \textit{grid}, seperti gambar dan sangat efektif dalam mengenali \textit{pattern} visual. CNN memahami hubungan spasial antar piksel melalui \textit{convolution matrix}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/cnn.jpg}
+    \caption{Visualisasi Dari Convolutional Neural Network}
+    \label{fig:placeholder}
+\end{figure}
+
+Konsep utama dalam CNN adalah \textit{convolutional layer} yang menerapakan filter (kernel) pada gambar input untuk mengekstrak fitur penting seperti tepi, sudut, dan tekstur. \textit{Pooling layer} kemudian digunakan untuk mereduksi dimensi data tapi tetap mempertahankan informasi penting, sehinga beban komputasi berkurang dan mencegah \textit{overfitting}. Kernel digeser melewati seluruh gambar untuk menghasilkan \textit{feature maps} yang meng-\textit{highlight} are-area penting. Setelah beberapa pengulagan \textit{convulational dan pooling layees}, data biasanya akan diratakan (\textit{flatten}) dan diteruskan ke \textit{dense later} yang melakukan klasifikasi berdasar fitur yang telah di ekstraksi
+
+
+\subsection{Tantangan}
+Materinya menarik banget, tapi lumayan \textit{overwhelmed} dengan materi-materi yang harus dipelajari (banyak buanget). Tapi gapapa seru soalnya :D 
+
+\section{Senin, 2 Februari 2026}
+
+\subsection{Hands-On 1}
+Di hari ini aku udah mulai nyicil Hands-On 1 dan jujur ini susah... Ini bukan tipe Hands-On yang sekali baca solusi atau bentukan \textit{code}-nya udah bisa kepikiran. Tapi Hands-On ini perlu dibaca, dipahami, ditelaah berulang-ulang biar bisa mahamin soal. Ditambah dengan aku yang belum pernah belajar mengenai \textit{design pattern}, jadi lumayan bingung harus mulai tugas ini dari mana. Setelah mahamin \textit{design pattern}-nya (\textit{Observer dan Strategy pattern}), aku mulai ngerti gimana \textit{data flow} antara drone dengan si \textit{dashboard}. Dan yak ini buat satu tugas ini aku nge-grind dari bangun tidur sampe malam. 
+
+\section{Selasa, 3 Februari 2026}
+Distaym kita ngerjain THT, aku ngeliat soal-soal THT 2 ini menarik banget terutama Swarm Drone.
 
 \end{document}
