@@ -230,6 +230,47 @@ Materinya menarik banget, tapi lumayan \textit{overwhelmed} dengan materi-materi
 Di hari ini aku udah mulai nyicil Hands-On 1 dan jujur ini susah... Ini bukan tipe Hands-On yang sekali baca solusi atau bentukan \textit{code}-nya udah bisa kepikiran. Tapi Hands-On ini perlu dibaca, dipahami, ditelaah berulang-ulang biar bisa mahamin soal. Ditambah dengan aku yang belum pernah belajar mengenai \textit{design pattern}, jadi lumayan bingung harus mulai tugas ini dari mana. Setelah mahamin \textit{design pattern}-nya (\textit{Observer dan Strategy pattern}), aku mulai ngerti gimana \textit{data flow} antara drone dengan si \textit{dashboard}. Dan yak ini buat satu tugas ini aku nge-grind dari bangun tidur sampe malam. 
 
 \section{Selasa, 3 Februari 2026}
-Distaym kita ngerjain THT, aku ngeliat soal-soal THT 2 ini menarik banget terutama Swarm Drone.
 
+\subsection{THT 2}
+Distaym kita ngerjain THT, aku ngeliat soal-soal THT 2 ini menarik banget terutama implementasi \textit{path planning } dan \textit{swarm drone}. Pada \textit{swarm drone} menghindari \textit{obstacle} adalah hal yang wajib untuk dilakukan, sesuai dengan \textit{paper} yang diberikan untuk menghindari \textit{obstacle} digunakan metode \textit{adaptive artificial potential field}. Metode ini menganggap sebuah \textit{obstacle} sebagai titik yang memberi gaya tolak ke objek/drone yang meningkat berbanding terbalik dengan kuadrat jarak antara \textit{obstacle} dengan objek. Objek akan bergerak menujut arah dari total gaya tolak yang dirasakannya. Rumus yang digunakan untuk menghitung gaya tolak antara objek $i$ dengan vektor posisi $\vec{p_i} = (\vec{x_i}, \vec{y_i})$ dan obstacle $o$ dengan vektor posisi $\vec{p_o} = (\vec{x_o}, \vec{y_o})$ yaitu:
+
+\[
+\overrightarrow{F_{rep,i}} = 
+\begin{cases}
+    \eta(\frac{1}{d_{oi}} - \frac{1}{d_T})^2 \cdot \frac{\vec{p_o} - \vec{p_i}}{|\vec{p_o} - \vec{p_i}}, & d_oi \le d_T \\
+    0, & d_oi > d_T
+\end{cases}
+\]
+
+dimana $\eta$ adalah konstanta bilangan ril, $d_{oi}$ adalah jarak \textit{euclidean} antara objek dengan \textit{obstacle} dan $d_T$ adalah jarak maksimum dimana gaya tolak antara drone dengan \textit{obstacle} bekerja. Total gaya tolak bisa dinotasikan dengan
+
+\[
+\overrightarrow{F_{rep}} = \sum{\overrightarrow{F_{rep,i}}}
+\]
+
+Lalu untuk drone swarm diterapkan \textit{Boids Flocking Algorithm}, terdapat tiga aturan fundamental untuk mensimulasikan perilaku \textit{flocking}, yaitu \textit{separation}, \textit{alignment}, dan \textit{cohesion}. Aturan \textit{separation} mencegah drone untuk bertabrakan satu sama lain. Misal drone swarm dengan $n$ buah drone, maka aturan ini dapat diberlakukan dengan
+
+\[
+\vec{v_s} = \sum_{i=1}^{n}{\frac{\vec{x_0} - \vec{x_i}}{|\vec{x_o} - \vec{x_i}| ^ 2}}
+\]
+
+Lalu, aturan \textit{alignment} memastikan swarm drone untuk bergerak menuju arah yang sama. Aturan ini bisa direpresentasikan sebagai
+
+\[
+\vec{v_s} = \frac{1}{n} \sum_{i=1}^{n}{\vec{v_i}}
+\]
+
+Dan aturan \textit{cohesion} memastikan drone untuk berdekatan satu sama lain dan drone bergerak menuju pusat swarm. Aturan ini bisa direpresentasikan sebagai berikut
+
+\[
+\vec{v_c} = \frac{1}{n} \sum_{i=1}^{n}{\vec{x_i}}
+\]
+
+Resultan kecepatan dari drone adalah 
+
+\[
+\vec{v} = w_s\vec{v_s} + w_a\vec{v_a} + w_c\vec{v_c} 
+\]
+
+Dimana $w_a$, $w_b$, dan $w_c$ adalah konstanta yang ditentukan saat proses \textit{tuning}. Saat implementasinya dalam programnya rasanya sulit-sulit tapi seru gitu dan sesekali aku ngintip + belajar dari repo Kak Nayaka (izin ya kak hehe). Tantangan dalam tugas swarm drone ini adalah saat ngekonfigurasi \textit{weight} untuk setiap gaya dan aturan, aku sendiri ngelakuinnya dengan trial dan error, nyoba berkali-kali sampai swarm drone-nya lumayan cerdas untuk menuju target.
 \end{document}
